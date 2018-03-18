@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-#UNTESTED AS OF 20 Jan 2018
 import time
 import araPowerSupply
 import sys
