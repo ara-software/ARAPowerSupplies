@@ -70,19 +70,19 @@ class SerialCom:
             readback = self.sendCommand('OUT off')
             return readback
         else:
-            print 'mode input not accepted'
+            print ('mode input not accepted')
             return
 
     def setVoltage(self, voltage):
         if voltage > 400:
-            print 'voltage too high, probably, so will not program'
+            print ('voltage too high, probably, so will not program')
             return
         readback = self.sendCommand(cmd='VSET ', value=voltage)
         return readback
 
     def setCurrent(self, current):
         if current > 2.5:
-            print 'exceeds current limit on supply, will not program'
+            print ('exceeds current limit on supply, will not program')
             return
         readback = self.sendCommand(cmd='ISET ', value=current)
         return readback
