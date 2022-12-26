@@ -27,9 +27,9 @@ class SerialCom:
     def sendCommand(self, cmd, value=None):
         retstring=''
         if value == None:
-            self.serdev.write(cmd+'\r\n')
+            self.serdev.write(bytes(cmd+'\r\n'))
         else:
-            self.serdev.write(cmd+str(value)+'\r\n')
+            self.serdev.write(bytes(cmd+str(value)+'\r\n')
         time.sleep(0.1) #seems to be robust
         while self.serdev.inWaiting() > 0:
             retstring += self.serdev.read(1)
