@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 #UNTESTED AS OF 20 Jan 2018
 import time
@@ -13,9 +13,9 @@ if __name__=='__main__':
     #parser = OptionParser(usage)
 
     if len(sys.argv) != 2:
-        print 'usage : program requires one argument:' 
-        print 'specify PS by adding argument \'ara1\', \'ara5\',\'ara3\','
-        print 'or \'all\' if you want to power up all of them'
+        print ('usage : program requires one argument:' )
+        print ('specify PS by adding argument \'ara1\', \'ara5\',\'ara3\',')
+        print ('or \'all\' if you want to power up all of them')
         sys.exit()
     
     #dumb way to check if argument is in accepted list
@@ -26,29 +26,29 @@ if __name__=='__main__':
             break;
 
     if good_arg == False:
-        print 'argument not accepted'
-        print 'accepted program arguments are', accepted_args
+        print ('argument not accepted')
+        print ('accepted program arguments are', accepted_args)
         sys.exit()
        
-    print 'proceeding...'
+    print ('proceeding...')
     
     ara_power = araPowerSupply.ARAPowerSupplies()
     
     if sys.argv[1] == 'ara1' or sys.argv[1] == 'all':
-        print 'turning on ARA1/4 supply...'
+        print ('turning on ARA1/4 supply...')
         ara_power.ara1.setOutput(mode=1)
         time.sleep(1)
     if sys.argv[1] == 'ara5' or sys.argv[1] == 'all': 
-        print 'turning on ARA5 supply...'
+        print ('turning on ARA5 supply...')
         ara_power.ara5.setOutput(mode=1)
         time.sleep(1)
     if sys.argv[1] == 'ara3' or sys.argv[1] == 'all':
-        print 'turning on ARA2/3 supply...'
+        print ('turning on ARA2/3 supply...')
         ara_power.ara3.setOutput(mode=1)
         time.sleep(1)
     
-    print '**'
-    print 'check status by running ./getPowerSupplyStatus.py'
+    print ('**')
+    print ('check status by running ./getPowerSupplyStatus.py')
 
     ara_power.closeConnections()
     
