@@ -25,16 +25,16 @@ class SerialCom:
         self.serdev.close()
 
     def sendCommand(self, cmd, value=None):
-        retstring=''
+        retstring=b''
         if value == None:
-            self.serdev.write(bytes(cmd+'\r\n'))
+            self.serdev.write(bytes(str(cmd)+'\r\n', encoding='utf-8'))
         else:
-            self.serdev.write(bytes(cmd+str(value)+'\r\n'))
+            self.serdev.write(bytes(cmd+str(value)+'\r\n', encoding='utf-8'))
         time.sleep(0.1) #seems to be robust
         while self.serdev.inWaiting() > 0:
             retstring += self.serdev.read(1)
 #            print (retstring)
-        return retstring
+        return retstring.decode('utf-8') 
 
     def identify(self):
         readback = self.sendCommand('*IDN?')
